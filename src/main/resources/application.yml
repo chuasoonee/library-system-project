@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: library-system
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080
+  servlet:
+    context-path: /library-system
