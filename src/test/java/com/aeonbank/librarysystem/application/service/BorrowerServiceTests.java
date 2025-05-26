@@ -1,11 +1,13 @@
 package com.aeonbank.librarysystem.application.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
@@ -51,6 +53,17 @@ public class BorrowerServiceTests {
 		verify(borrowerRepository, times(1)).save(any(Borrower.class));
 	}
 
+	@Test
+	public void BorrowerService_GetAllBooks_ReturnAllBooks() {
+		when(borrowerRepository.findAll())
+				.thenReturn(List.of(borrower));
+
+		List<Borrower> allBorrowers = borrowerService.getAllBorrowers();
+
+		assertThat(allBorrowers).isNotNull();
+		assertThat(allBorrowers.size()).isEqualTo(1);
+	}
+	
 	@Test
 	public void BorrowerService_RegisterBorrower_WhenEmailAlreadyRegistered_ThrowException() {
 		// Arrange

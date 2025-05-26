@@ -1,5 +1,6 @@
 package com.aeonbank.librarysystem.domain.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
@@ -10,6 +11,7 @@ import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import com.aeonbank.librarysystem.domain.model.Book;
 import com.aeonbank.librarysystem.domain.model.Borrower;
 
 @DataJpaTest
@@ -65,5 +67,12 @@ public class BorrowerRepositoryTests {
 		Optional<Borrower> foundBorrower = borrowerRepository.findById(999L); // Non-existent ID
 
 		Assertions.assertThat(foundBorrower).isEmpty();
+	}
+	
+	@Test
+	public void BorrowerRepository_FindAll_ReturnsAllBorrowers() {
+		List<Borrower> allBorrowers = borrowerRepository.findAll();
+		Assertions.assertThat(allBorrowers).isNotNull();
+		Assertions.assertThat(allBorrowers.size()).isEqualTo(1);
 	}
 }

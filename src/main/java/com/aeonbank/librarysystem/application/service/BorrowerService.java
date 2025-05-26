@@ -1,5 +1,7 @@
 package com.aeonbank.librarysystem.application.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.aeonbank.librarysystem.domain.model.Borrower;
@@ -22,5 +24,10 @@ public class BorrowerService {
 			});
 		
 		return borrowerRepository.save(new Borrower(name, email));
+	}
+	
+	public List<Borrower> getAllBorrowers() {
+
+		return borrowerRepository.findAll();
 	}
 }
