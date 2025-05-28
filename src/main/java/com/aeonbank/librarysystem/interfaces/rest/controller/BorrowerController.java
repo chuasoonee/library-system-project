@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.aeonbank.librarysystem.application.service.BorrowerService;
 import com.aeonbank.librarysystem.domain.model.Borrower;
-import com.aeonbank.librarysystem.interfaces.rest.dto.GetBookResponseDTO;
 import com.aeonbank.librarysystem.interfaces.rest.dto.GetBorrowerResponseDTO;
 import com.aeonbank.librarysystem.interfaces.rest.dto.RegisterBorrowerRequestDTO;
 import com.aeonbank.librarysystem.interfaces.rest.dto.RegisterBorrowerResponseDTO;
